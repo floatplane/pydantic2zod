@@ -130,6 +130,7 @@ def _class_field_to_zod(field: ClassField, code: "Lines") -> None:
     _class_field_type_to_zod(field.type, code)
 
     if default := field.default_value:
+        print(f"processing field {field.name}, default_value {field.default_value}")
         code.add(".default(", inline=True)
         match default:
             case PyString(value=value):
